@@ -1,0 +1,38 @@
+{
+  "tests": [
+    {
+      "name": "Test AI chat response",
+      "method": "POST",
+      "path": "/",
+      "body": {
+        "message": "Привет, как дела?"
+      },
+      "expectedStatus": 200,
+      "expectedBody": {
+        "message": "string",
+        "timestamp": "string",
+        "status": "success"
+      },
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Test empty message error",
+      "method": "POST",
+      "path": "/",
+      "body": {
+        "message": ""
+      },
+      "expectedStatus": 400,
+      "expectedBody": {
+        "error": "Message is required"
+      },
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Test OPTIONS for CORS",
+      "method": "OPTIONS",
+      "path": "/",
+      "expectedStatus": 200
+    }
+  ]
+}
